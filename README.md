@@ -32,23 +32,23 @@
 ## 形容詞
 ### 数詞
 基本的にアラビア数字で表記するが、発音は以下の通りである  
-`0` `zelu`  
-`1` `unu`  
-`2` `du`  
-`3` `tulu`  
-`4` `katu`  
-`5` `tɕinku`  
-`6` `seju`  
-`7` `setu`  
-`8` `otu`  
-`9` `nobu`  
-`10` `dju`  
-`11 `djunu`  
-`12` `djudu`  
-`13` `djutulu`  
+0 `zelu`  
+1 `unu`  
+2 `du`  
+3 `tulu`  
+4 `katu`  
+5 `tɕinku`  
+6 `seju`  
+7 `setu`  
+8 `otu`  
+9 `nobu`  
+10 `dju`  
+11 `djunu`  
+12 `djudu`  
+13 `djutulu`  
 ︙  
-`20` `dudju`  
-`21` `dudjunu`  
+20 `dudju`  
+21 `dudjunu`  
 
 ### 色詞
 白い・明るい `bau`  
