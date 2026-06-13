@@ -79,7 +79,7 @@ Aのような、Aのようだ `janu A`
 言う `ju`  
 歩く `pu`  
 移動する `tabu`  
-欲しがる `wosu`  
+欲しがる `wasu`  
 流れる `walu`  
 数える `namu`  
 食べる `paku`  
