@@ -71,6 +71,8 @@
 怒っている `latu`  
 悲しんでいる `salu`  
 喜んでいる `jabu`  
+かわいい `labu`  
+気持ちのいい `sapu`  
 
 ### 前置詞
 Aのような、Aのようだ `janu A`  
@@ -86,7 +88,11 @@ Aのような、Aのようだ `janu A`
 飲む `halu`  
 飲食する `atu`  
 浸かる `tɕapu`  
+逃げる `balu`  
+投げる `tapu`  
+拾う・捕える `ʃapu`  
+待つ `wabu`  
 
 ## 活用及び品詞変形
 終止連体形 `u` ・連用形 `ai` ・命令形 `elo` ・依頼形 `eŋe` ・動名詞 `ə` ・進行形容詞 `ou`  
-例： `ju` の活用 `ju` ・ `jai` ・ `jelo` ・ `jeŋe` ・ `jə` ・ `jou`  
+例： `ju` の活用 `ju` ・ `jai` ・ `jelo` ・ `jeŋe` ・ `jə` ・ `jou`
