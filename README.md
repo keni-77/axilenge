@@ -32,22 +32,23 @@
 ### 数詞
 基本的にアラビア数字で表記するが、発音は以下の通りである  
 0 `zelu`  
-1 `unu`  
-2 `du`  
+1 `wanu`  
+2 `tu`  
 3 `tulu`  
-4 `katu`  
-5 `tɕinku`  
-6 `seju`  
-7 `setu`  
-8 `otu`  
-9 `nobu`  
-10 `dju`  
-11 `djunu`  
-12 `djudu`  
-13 `djutulu`  
+4 `folu`  
+5 `fabu`  
+6 `siku`  
+7 `sebu`  
+8 `eitu`  
+9 `nainu`  
+10 `tenu`  
+11 `tenai-wanu`  
+12 `tenai-tu`  
+13 `tenai-tulu`  
 ︙  
-20 `dudju`  
-21 `dudjunu`  
+20 `tai-tenai-zelu`  
+21 `tai-tenai-wanu`  
+︙
 
 ### 色詞
 白い・明るい `bau`  
