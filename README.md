@@ -110,6 +110,7 @@ Aによる、Aを使った `jasu A`
 数える `namu`  
 食べる `paku`  
 飲む `halu`  
+買う `ɕapu`  
 飲食する `atu`  
 浸かる `tɕapu`  
 逃げる `balu`  
@@ -127,6 +128,9 @@ Aによる、Aを使った `jasu A`
 喜ぶ `jabu`  
 興奮する `sapu`  
 心地よさ・気持ちよさを感じる `jaku`  
+
+### 変化使役動詞
+AをBの状態（Bする状態）に（**直接**）させる `ɕenulu we A te B`  
 
 ## 活用及び品詞変形
 [語幹] + [活用語尾]  
@@ -151,5 +155,6 @@ Aの所有する `A ŋo`
 推量 `lusu`  
 
 # 接続詞
-AとB `A san B`  
-AとBとC `A san B san C`  
+A ∧ B `A san B`  
+A ∧ B ∧ C ⋯ `A san B san C ⋯`  
+A ∨ B `A man B`  
