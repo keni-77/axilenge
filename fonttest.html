@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Axilenge Script - Interactive Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,6 +151,12 @@ label {
   font-family: monospace;
 }
 
+.input-help {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
 /* Sections */
 h2 {
   font-family: 'Outfit', sans-serif;
@@ -214,6 +220,12 @@ h2::after {
   color: var(--text-secondary);
   margin-top: 8px;
   font-weight: 500;
+}
+
+#syll-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 母音6つ */
+  gap: 12px;
 }
 
 /* Footer & Download */
@@ -297,14 +309,17 @@ h2::after {
   <div class="container">
     <header>
       <h1>Axilenge Script Studio</h1>
-      <p class="subtitle">Interactive Typeface Preview & Generator</p>
+      <p class="subtitle">Interactive Typeface Preview</p>
     </header>
 
     <div class="studio-card">
       <div class="form-group">
         <label for="txt">Keyboard Input (Latin)</label>
-        <input id="txt" type="text" class="script-input" placeholder="ta du ngu ba sa nna" autofocus autocomplete="off" />
+        <input id="txt" type="text" class="script-input" placeholder="axilenge" autofocus autocomplete="off" />
         <div class="latin-echo" id="echo">入力: </div>
+        <p class="input-help">
+          特殊な入力: ə → q / ɕ → x / tɕ → tx / ŋ → ng / θ → th / ɴ → nn
+        </p>
       </div>
       
       <div class="form-group" style="margin-bottom: 0;">
@@ -353,6 +368,20 @@ const PUA_CONS_BASE  = PUA_VOWEL_BASE + vowels.length;
 const PUA_NN         = PUA_CONS_BASE + consOrder.length;
 const PUA_SYLL_BASE  = PUA_NN + 1;
 
+// --- IPA ラベル変換テーブル ---
+const labelMap = {
+  q: "ə",
+  x: "ɕ",
+  tx: "tɕ",
+  ng: "ŋ",
+  th: "θ"
+};
+
+function ipaLabel(str) {
+  return labelMap[str] || str;
+}
+
+
 // --- グリフ一覧の表示 ---
 function makeCell(parent, cp, label) {
   const cell = document.createElement("div");
@@ -364,19 +393,19 @@ function makeCell(parent, cp, label) {
 
 // 母音のみ
 const vg = document.getElementById("vowel-grid");
-vowels.forEach((v, i) => makeCell(vg, PUA_VOWEL_BASE + i, v));
+vowels.forEach((v, i) => makeCell(vg, PUA_VOWEL_BASE + i, ipaLabel(v)));
 
 // 子音のみ
 const cg = document.getElementById("cons-grid");
-consOrder.forEach((c, i) => makeCell(cg, PUA_CONS_BASE + i, c));
-makeCell(cg, PUA_NN, "nn");
+consOrder.forEach((c, i) => makeCell(cg, PUA_CONS_BASE + i, ipaLabel(c)));
+makeCell(cg, PUA_NN, "ɴ");
 
 // 音節
 const sg = document.getElementById("syll-grid");
 let idx = 0;
 consOrder.forEach(c => {
   vowels.forEach(v => {
-    makeCell(sg, PUA_SYLL_BASE + idx, c + v);
+    makeCell(sg, PUA_SYLL_BASE + idx, ipaLabel(c) + ipaLabel(v));
     idx++;
   });
 });
