@@ -1,0 +1,398 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Axilenge Script - Interactive Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-color: #0b0f19;
+  --card-bg: #151c2c;
+  --border-color: #243049;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --success: #10b981;
+}
+
+@font-face {
+  font-family: AxilengeScript;
+  src: url("font_pua.otf") format("opentype");
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  padding: 40px 24px;
+  line-height: 1.5;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #a5b4fc, #c084fc);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Main Studio Card */
+.studio-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.studio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent), #a855f7);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.script-input {
+  font-family: AxilengeScript, serif;
+  font-size: 48px;
+  font-feature-settings: "liga" 1;
+  -webkit-font-feature-settings: "liga" 1;
+  width: 100%;
+  padding: 16px 20px;
+  background-color: rgba(11, 15, 25, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.script-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  background-color: rgba(11, 15, 25, 0.8);
+}
+
+.preview-box {
+  font-family: AxilengeScript, serif;
+  font-size: 72px;
+  font-feature-settings: "liga" 1;
+  -webkit-font-feature-settings: "liga" 1;
+  min-height: 140px;
+  padding: 24px;
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  background-color: rgba(11, 15, 25, 0.3);
+  white-space: pre-wrap;
+  word-break: break-all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.latin-echo {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-family: monospace;
+}
+
+/* Sections */
+h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.glyph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.glyph-cell {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 8px;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glyph-cell:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+}
+
+.glyph-char {
+  font-family: AxilengeScript, serif;
+  font-size: 44px;
+  font-feature-settings: "liga" 1;
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  color: var(--text-primary);
+  transition: transform 0.2s ease;
+}
+
+.glyph-cell:hover .glyph-char {
+  transform: scale(1.1);
+}
+
+.glyph-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Footer & Download */
+.footer-actions {
+  margin-top: 60px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.download-card {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.download-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.download-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+.download-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-top: 16px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Axilenge Script Studio</h1>
+      <p class="subtitle">Interactive Typeface Preview & Generator</p>
+    </header>
+
+    <div class="studio-card">
+      <div class="form-group">
+        <label for="txt">Keyboard Input (Latin)</label>
+        <input id="txt" type="text" class="script-input" placeholder="ta du ngu ba sa nna" autofocus autocomplete="off" />
+        <div class="latin-echo" id="echo">入力: </div>
+      </div>
+      
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Visual Output (Interactive Preview)</label>
+        <div id="preview" class="preview-box"></div>
+      </div>
+    </div>
+
+    <h2>Vowels (母音のみ)</h2>
+    <div id="vowel-grid" class="glyph-grid"></div>
+
+    <h2>Consonants (子音のみ / 母音なし)</h2>
+    <div id="cons-grid" class="glyph-grid"></div>
+
+    <h2>Syllables (音節一覧 / 子音 + 母音)</h2>
+    <div id="syll-grid" class="glyph-grid"></div>
+
+    <div class="footer-actions">
+      <div class="download-card">
+        <h3 class="download-title">フォントのダウンロード</h3>
+        <p class="download-desc">
+          ビルドされた最新のフォントを <strong>font.otf</strong> としてローカルにダウンロードして保存します。Windowsにインストールしてメモ帳などでご利用ください。
+        </p>
+        <a href="font_pua.otf" download="font.otf" class="download-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+          </svg>
+          font.otf としてダウンロード
+        </a>
+      </div>
+      <div class="copyright">
+        Axilenge IME System &copy; 2026 keni
+      </div>
+    </div>
+  </div>
+
+<script>
+const PUA_BASE = 0xE500;
+const vowels = ["u","o","a","e","i","q"];
+const consOrder = [
+  "t","d","k","g","h","w","s","z","p","b","n","j","l","f","m",
+  "x","tx","ng","th"
+];
+const PUA_VOWEL_BASE = PUA_BASE;
+const PUA_CONS_BASE  = PUA_VOWEL_BASE + vowels.length;
+const PUA_NN         = PUA_CONS_BASE + consOrder.length;
+const PUA_SYLL_BASE  = PUA_NN + 1;
+
+// --- グリフ一覧の表示 ---
+function makeCell(parent, cp, label) {
+  const cell = document.createElement("div");
+  cell.className = "glyph-cell";
+  cell.innerHTML = `<span class="glyph-char">${String.fromCodePoint(cp)}</span>`
+    + `<div class="glyph-label">${label}</div>`;
+  parent.appendChild(cell);
+}
+
+// 母音のみ
+const vg = document.getElementById("vowel-grid");
+vowels.forEach((v, i) => makeCell(vg, PUA_VOWEL_BASE + i, v));
+
+// 子音のみ
+const cg = document.getElementById("cons-grid");
+consOrder.forEach((c, i) => makeCell(cg, PUA_CONS_BASE + i, c));
+makeCell(cg, PUA_NN, "nn");
+
+// 音節
+const sg = document.getElementById("syll-grid");
+let idx = 0;
+consOrder.forEach(c => {
+  vowels.forEach(v => {
+    makeCell(sg, PUA_SYLL_BASE + idx, c + v);
+    idx++;
+  });
+});
+
+// --- インタラクティブプレビュー ---
+const input = document.getElementById("txt");
+const preview = document.getElementById("preview");
+const echo = document.getElementById("echo");
+
+function update() {
+  const val = input.value;
+  preview.textContent = val || " ";
+  echo.textContent = "入力: " + (val || "(未入力)");
+}
+input.addEventListener("input", update);
+update();
+</script>
+</body>
+</html>
